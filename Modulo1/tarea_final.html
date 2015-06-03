@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head> 
+		<meta charset="utf-8">
+		<title>Secciones y l&iacute;neas generales de un documento HTML5</title>
+		<style type="text/css">
+			body {
+				font-family: Verdana, Tahoma;
+				font-size: 13px;
+				background-color: #CFDFF8;
+			}
+			#encabezado, #encabezado2 {
+				color: #26569E;
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<h1 id="encabezado">Secciones y l&iacute;neas generales de un documento HTML5</h1>
+		</header>
+		<section>
+			<p>La especificaci&oacute;n <strong><u>HTML5</u></strong> trae muchos nuevos elementos a los desarrolladores web, permiti&eacute;ndoles describir la estructura de un documento web con sem&aacute;ntica estandarizada. Este documento describe estos elementos y c&oacute;mo usarlos para definir el perfil de cualquier documento.</p>
+		</section>
+		<section>
+			<h2 id="encabezado2">Problemas resueltos por HTML5</h2>
+			<p>La definici&oacute;n de la estructura de un documento en <strong>HTML4</strong> y su algoritmo de perfilado es muy tosco y genera numerosos problemas:</p>
+			<ol>
+				<li><strong><u>HTML5</u></strong> quita la necesidad de elementos <em>div</em> para definir secciones sem&aacute;nticas sin definir valores espec&iacute;ficos para los atributos class, introduciendo un nuevo elemento, <em>section</em>, el elemento de secci&oacute;n <strong>HTML</strong>.</li>
+				<li>Mezclar varios documentos es dif&iacute;cil: la inclusi&oacute;n de un sub-documento en un documento principal. Esto se resuelve en <strong><u>HTML5</u></strong> con los elementos de seccionado (<em>article</em>, <em>section</em>, <em>nav</em> y <em>aside</em>) son siempre subsecciones de su secci&oacute;n ancestra m&aacute;s cercana.</li>
+				<li><strong><u>HTML5</u></strong> introduce el elemento <em>hgroup</em> que oculta todos los elementos de cabecera excepto el primero de m&aacute;s alto rango (por ejemplo, <hgroup><h1>Justine</h1><h2>Les Malheurs de la Vertu</h2></hgroup> crea el perfil <u>1. Justine</u>).</li>
+				<li>Un documento puede tener secciones especiales conteniendo informaci&oacute;n relacionado que no es parte del flujo principal. <strong><u>HTML5</u></strong> introduce el elemento <em>aside</em> permitiendo a dichas secciones no ser parte del perfil principal.</li>
+				<li>Hay informaci&oacute;n relacionada no al documento pero si al sitio entero, como logos, men&uacute;s, tablas de contenidos, o informaci&oacute;n de derechos de autor y notas legales. Para ese prop&oacute;sito, <strong><u>HTML5</u></strong> introduce tres elementos de secci&oacute;n espec&iacute;ficos: <em>nav</em> para colecciones de enlaces, como una tabla de contenidos, <em>footer</em> y <em>header</em> informaci&oacute;n relacionada con el sitio.</li>
+			</ol>
+		</section>	
+		<footer>
+			<p>De manera m&aacute;s general, <strong><u>HTML5</u></strong> trae precisi&oacute;n a las caracter&iacute;sticas de seccionado y cabecera, permitiendo a los perfiles de documento ser predecibles y usados por el navegador para mejorar la experiencia de usuario.</p>
+		</footer>
+	</body>
+</html>
