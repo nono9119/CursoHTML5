@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Reloj</title>
+		<meta charset="UTF-8">
+		<style type="text/css">
+			* {
+				text-align: center;
+			}
+			div {
+				margin-right: 35%;
+				margin-left: 35%;
+				border-style: solid;
+			}
+		</style>
+		<script type="text/javascript">
+			function mostrar_hora( ) {
+  				var dv = document.getElementById("hora");
+  				var fch = new Date();
+  				// Cojo solo lo necesario de la fecha y construyo el string
+  				var tiempo = fch.getHours() + " horas, " + fch.getMinutes() + " minutos, " + fch.getSeconds() 
+  				+ " segundos, " + fch.getMilliseconds() + " ms.";
+  				dv.innerHTML = tiempo;  
+			}
+		</script>
+	</head>
+	<body>
+		<h2>Reloj</h2>
+		<div id="hora"><div>
+		<script type="text/javascript">
+			var dv = document.getElementById("hora");
+			var id = setInterval(mostrar_hora, 1);
+			// Paro el reloj con clearInterval()
+			dv.addEventListener("click", function() {
+				if (id !== 0) {
+					clearInterval(id);
+				}
+			});
+			// Pongo de nuevo en marcha el reloj y le asigno la id
+			dv.addEventListener("dblclick", function() { id = setInterval(mostrar_hora, 1) });
+		</script>
+	</body>
+</html>
