@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Final JS</title>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+		<header>
+			<h1>¡Acierta el número!</h1>
+		</header>
+		<section>
+			<script type="text/javascript">
+				// Funcion para obtener el numero aleatorio
+				function num() {
+					var aleatorio = Math.ceil(Math.random() * 3);
+					return aleatorio;
+				}
+				// Incializacion de variables - obtencion del numero introducido
+				var aleatorio = num();
+				var preguntaChino = "選擇一個號碼：1，2或3"; // Elija un número: 1, 2 o 3
+				var respuestaChino1 = "您必須輸入1，2或3"; // Debe introducir 1, 2 o 3
+				var respuestaChino2 = "沒錯！的數目是 "; // ¡Correcto! El número era el 
+				var respuestaChino3 = "對不起，該號碼是 "; // Lo siento, el número era el
+				var numero = prompt("Elija un número: 1, 2 o 3 \n (" + preguntaChino + ").");
+				// Conversion a entero
+				if (isNaN(numero)) {
+					document.writeln("Debe introducir 1, 2 o 3 (" + respuestaChino1 + ").");
+				} else {
+					numero = +numero;
+					// Conprobaciones y visionado del resultado	
+					if (numero === aleatorio) {
+						document.writeln("<strong>¡Correcto!</strong> El número era el (" + respuestaChino2 + ") <strong>" + aleatorio + "</strong>.");
+					} else {
+						document.writeln("Lo siento, el número era el (" + respuestaChino3 + ") <strong>" + aleatorio + "</strong>.");
+					}	
+				}
+			</script>
+		</section>
+		<footer>
+			<p>
+				Recargue la página para intentarlo de nuevo.
+				<br>
+				(刷新頁面來再試一次。)
+			</p>
+		</footer>
+	</body>
+</html>
