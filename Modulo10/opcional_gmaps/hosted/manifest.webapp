@@ -1,0 +1,16 @@
+{
+  "version": "5.0",
+  "name": "Gmaps",
+  "description": "Ejercicio Gmaps",
+  "launch_path": "http://nono919.neocities.org/modulo10/hosted/opcional_gmaps.html",
+
+  "icons": {
+    "16":  "http://nono919.neocities.org/modulo10/hosted/ico_16.png",
+    "48":  "http://nono919.neocities.org/modulo10/hosted/ico_48.png",
+    "128": "http://nono919.neocities.org/modulo10/hosted/ico_128.png"
+  },
+  "developer": {
+    "name": "AMG",
+    "url": "nono919.neocities.org"
+  }
+}

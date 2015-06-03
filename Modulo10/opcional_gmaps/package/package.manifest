@@ -1,0 +1,14 @@
+{
+  "version": "5.0",
+  "name": "Gmaps",
+  "package_path": "./package.zip",
+  "developer": {
+    "name": "AMG",
+    "url": "nono919.neocities.org"
+  },
+  "permissions": {
+    "geolocation": {
+      "description": "Requerido para el autocompletado en la pantalla compartida"
+    }
+  }
+}

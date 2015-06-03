@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>GMaps.js &mdash; Geolocation</title>
+  <script type="text/javascript" src="zepto.min.js"></script>
+  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+  <script type="text/javascript" src="gmaps.js"></script>
+  <link rel="stylesheet" type="text/css" href="mypath.css" />
+  <script type="text/javascript">
+    var map;
+    var puntos = [];
+
+    $(function() {
+      // Muestra ruta entre marcas anteriores y actuales
+      function enlazarMarcador(e) {
+        var pos = puntos.length;
+        puntos[pos] = [e.latLng.lat(), e.latLng.lng()];
+        // Creo la variable localStorage para almacenar la ruta
+        localStorage.puntos_mapa = JSON.stringify(puntos);   
+        // Enlazo los marcadores y lo dibujo
+        enlazarMarcadores(pos-1, pos);
+        dibujaMarcador(pos);
+      };
+      // Enlazar dos marcadores de posicion
+      function enlazarMarcadores(a, b) {
+          map.drawRoute({
+            origin: [puntos[a][0], puntos[a][1]], // Origen
+            destination: [puntos[b][0], puntos[b][1]], // Destino
+            travelMode: 'driving', // Modo de viaje
+            strokeColor: '#000000', // Color de la línea
+            strokeOpacity: 0.6, // Opacidad de la línea
+            strokeWeight: 5 // Densidad de la linea
+          });
+      };
+      // Dibujar un marcador
+      function dibujaMarcador(a) {
+        map.addMarker({ lat: puntos[a][0], lng: puntos[a][1] });
+      }
+      // Geolocalizacion actual
+      function geolocalizar() {
+        GMaps.geolocate({
+          success: function(position) {
+            // Limpio el vector y agrego la longitud y latitud actuales en la primera posicion
+            puntos.length = 0;
+            puntos[0] = [position.coords.latitude, position.coords.longitude];
+            // Paso a la variable localStorage el vector y cargo el mapa
+            localStorage.puntos_mapa = JSON.stringify(puntos);
+            cargar_mapa();
+          },
+          error: function(error) { alert("Error en la geolocalización: " + error.message); },
+          not_supported: function(){ alert("El navegador no soporta la geolocalización"); },
+        });
+      };
+      // Dibujar el mapa
+      function dibujar_mapa() {
+        map = new GMaps({
+          el: '#map',
+          lat: puntos[0][0], 
+          lng: puntos[0][1],
+          click: enlazarMarcador, // Al clickar sobre un punto enlazo el marcador
+          tap: enlazarMarcador // Para moviles al pulsar
+        });
+      };
+      // Cargar el mapa
+      function cargar_mapa() {
+        dibujar_mapa();
+        dibujaMarcador(0);
+        // Recorro el vector para enlazar y dibujar los puntos marcados
+        for (var i = 1; i < puntos.length; i++) {
+           enlazarMarcadores(i-1, i);
+           dibujaMarcador(i);
+        }
+      }
+      // Obtengo el boton y le asigno un evento onClick
+      $("#iniciar").on('click', geolocalizar);
+      localStorage.puntos_mapa = (localStorage.puntos_mapa || JSON.stringify(puntos));
+      puntos = JSON.parse(localStorage.puntos_mapa);
+
+      if (puntos.length === 0) {
+        // Si el vector no contiene datos geolocalizo
+        geolocalizar();
+      } else {
+        // En caso contrario cargo el mapa
+        cargar_mapa();
+      }
+    });
+  </script>
+</head>
+<body>
+  <div id="latlng">
+    <h1>Geolocalización</h1>
+    <button id="iniciar">Iniciar</button>
+  </div>
+  <div id="map"></div>
+</body>
+</html>

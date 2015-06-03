@@ -1,0 +1,9 @@
+{
+  "version": "5.0",
+  "name": "Gmaps",
+  "package_path": "./package.zip",
+  "developer": {
+    "name": "Ejercicio Gmaps",
+    "url": "nono919.neocities.org"
+  }
+}

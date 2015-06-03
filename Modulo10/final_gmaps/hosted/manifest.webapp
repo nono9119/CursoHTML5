@@ -1,0 +1,21 @@
+{
+  "version": "5.0",
+  "name": "Gmaps",
+  "description": "Final Gmaps",
+  "launch_path": "/modulo10/final_gmaps/hosted/final_gmaps.html",
+
+  "icons": {
+    "16":  "/modulo10/final_gmaps/hosted/ico_16.png",
+    "48":  "/modulo10/final_gmaps/hosted/ico_48.png",
+    "128": "/modulo10/final_gmaps/hosted/ico_128.png"
+  },
+  "developer": {
+    "name": "AMG",
+    "url": "nono919.neocities.org"
+  },
+  "permissions": {
+    "geolocation": {
+      "description": "Requerido para el autocompletado en la pantalla compartida"
+    }
+  }
+}
