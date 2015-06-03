@@ -1,0 +1,22 @@
+h2 {
+	margin-left: 4%;
+}
+            
+#imagen {
+    background-image: url(https://nono919.neocities.org/modulo8/ej_final/crono.png);
+    background-repeat: no-repeat;
+    width: 256px;
+    height: 256px;
+    position: relative;
+}
+
+#crono {
+    position: absolute;
+    top: 128px;
+    left: 128px;
+}
+
+#cambiar, #inicializar {
+    margin-top: 1%;
+    margin-left: 1%;
+}
