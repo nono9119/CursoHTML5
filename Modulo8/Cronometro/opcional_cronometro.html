@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Event Example</title>
+		<meta charset="UTF-8">
+		<script type="text/javascript" src="zepto.min.js" > </script>
+		<script type="text/javascript" src="touch.js"> </script>
+		<script type="text/javascript">
+  			$(function() { 
+    			var t;
+    			var cl = $("#crono");
+    			// Mostrar el tiempo
+    			function mostrar() { 
+    				cl.html((+cl.html() + 0.1).toFixed(1)); 
+    			};
+    			// Arrancar el cronometro
+    			function arrancar() { 
+    				t = setInterval(mostrar, 100);
+    			};
+    			// Para el cronometro
+    			function parar() { 
+    				clearInterval(t);  
+    				t = undefined; 
+    			};
+    			// Arrancar-Parar
+    			function cambiar() { 
+    				if (!t) {
+    					arrancar(); 
+    				} else {
+    					parar(); 
+    				}
+    			};
+    			// Arrancar el cronometro con swipe
+    			$("body").on("swipeRight", function() { cl.html("0.0"); });
+    			// Al toque arranca-para
+    			$("body").on("tap", cambiar);
+    			/*
+    			$("#cambiar").on('click', cambiar);
+   				$("#inicializar").on('click', function() { cl.html("0.0"); });
+   				*/
+  			});
+		</script>
+	</head>
+	<body>
+		<h2>Cronómetro</h2>
+		<h2><span id="crono"> 0.0 </span> segundos </h2>
+	</body>
+</html>

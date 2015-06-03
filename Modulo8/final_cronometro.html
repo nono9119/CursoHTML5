@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Final Modulo 8</title>
+		<meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width; initial-scale=1.0">
+        <style type="text/css">
+            h2 {
+                margin-left: 4%;
+            }
+            #imagen {
+                background-image: url(crono.png);
+                background-repeat: no-repeat;
+                width: 256px;
+                height: 256px;
+                position: relative;
+            }
+
+            #crono {
+                position: absolute;
+                top: 128px;
+                left: 128px;
+            }
+
+            #cambiar, #inicializar {
+                margin-top: 1%;
+                margin-left: 1%;
+            }
+        </style>
+		<script type="text/javascript" src="zepto.min.js" > </script>
+		<script type="text/javascript" src="touch.js"> </script>
+		<script type="text/javascript">
+            $(function() {
+                // Funcion almacenada localmente para el tiempo
+                localStorage.tiempo = (localStorage.tiempo || "0.0");
+                // Para los intervalos
+                var intervalo; 
+                // Obtengo los contenedores
+                var cl = $("#crono");
+                var paradas = $("#paradas");
+                // Variable para almacenar las paradas
+                var paradas_guardadas = [];
+
+                // Funcion para ir incrementando el valor del cronometro
+                function incremento() {
+                    localStorage.tiempo = +localStorage.tiempo + 0.1;
+                };
+                // Mostrar el valor del cronometro con un decimal
+                function mostrar() {
+                    cl.html((+localStorage.tiempo).toFixed(1));
+                };
+                // Iniciar el cronometro
+                function arrancar() {
+                    intervalo = setInterval(function() { incremento(); mostrar() }, 100);
+                };
+                // Parar el cronometro
+                function parar() {
+                    clearInterval(intervalo);
+                    intervalo = undefined;
+                    paradas_guardadas.push($("#crono").html());
+                };
+                // Alterna entre arrancar/parar
+                function cambiar() {
+                    if (!intervalo) {
+                        arrancar();
+                    } else {
+                        parar();
+                        
+                    }
+                    mostrar_paradas();
+                };
+                // Comprobacion para no inicializar el cronometro en marcha
+                function inicializar() {
+                    if (!intervalo) {
+                        localStorage.tiempo = "0.0"; 
+                        mostrar();
+                    } else {
+                        mostrar();
+                    }
+                };
+                // Mostrar las paradas que se han realizado
+                function mostrar_paradas() {
+                    var parada = "";
+                    for (var i = 0; i < paradas_guardadas.length; i++) {
+                        parada += "<div id='parada'>" + paradas_guardadas[i] + "<br></div>";
+                    }
+                    $("#paradas").html(parada);
+                };
+
+                // Manejador con botones
+                $("#cambiar").on('click', cambiar);
+                $("#inicializar").on('click', inicializar);
+
+                // Manejador con eventos touch
+                // Arrancar el cronometro con swipe
+                $("body").on("swipeRight", function() { cl.html("0.0"); });
+                // Al toque arranca-para
+                $("body").on("tap", cambiar);
+
+                mostrar();
+            });
+		</script>
+	</head>
+	<body>
+		<h2>Cronómetro</h2>
+        <div id="imagen">
+		  <h1> <span id="crono"> 0.0 </span> </h1>
+        </div>
+        <button type="button" id="cambiar"> arrancar/parar </button>
+        <button type="button" id="inicializar"> inicializar </button>
+        <h2> Paradas: </h2>
+        <div id="paradas"></div>
+	</body>
+</html>
