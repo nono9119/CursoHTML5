@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Ejercicio JQuery-Zepto</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="estilos.css" media="screen" />
+		<script type="text/javascript" src="zepto.min.js"> </script>
+		<script type="text/javascript">
+			$(function() {
+				var num;
+				var suma = 0;
+				var flagFin = false;
+
+				for (;!flagFin;) {
+					num = prompt("Introduce un número \n (introduce 'acabar' para finalizar): " + suma);
+					// Compruebo si ha introducido acabar de diferentes maneras
+					if (num === "acabar" || num === "Acabar" || num === "ACABAR") {
+						flagFin = true;
+					}
+					// Compruebo si ha introducido algo diferente a acabar o un numero
+					if (!flagFin && isNaN(num)) {
+						num = prompt("Introduce un número \n (introduce 'acabar' para finalizar): ");
+					}
+					// Si no es acabar y es un numero lo sumo
+					if (!flagFin) {
+						suma = suma + parseInt(num);
+					}
+				}
+
+				$("#resultado").html("<strong>La suma total de los números introducidos es: </strong>" + suma);
+			});
+		</script>
+	</head>
+	<body>
+		<h1>Ejercicio Zepto con bucle For</h1>
+		<p id="resultado"> </p>
+		<a href="opcional_while.html">Ejercicio While</a>
+	</body>
+</html>
