@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Ejercicio fondos en div</title>
+		<meta charset="UTF-8">
+		<style type="text/css">
+			body {
+				background-image: url(fondo.gif);
+				background-repeat: repeat;
+				background-position: center;
+			}
+			.contenedor {
+				margin-left: 25%;
+				margin-top: 15%;
+
+			}
+			.fondo1, .fondo2, .fondo3 {
+				height: 120px;
+				width: 120px;
+				margin-left: 50px;
+				float: left;
+				margin-bottom: 20px;
+				text-align: center;
+				padding: 20px;
+				margin-top: 20px;
+				background-color: #F2F1EE;
+				border: 1px solid #000;
+				box-shadow: inset 0 0 5px 5px #2032AA;
+			}
+			.fondo1 {
+				background: linear-gradient(to top, rgba(26, 84, 201, 1) 0%, rgba(228, 234, 245,0) 100%);
+				border-radius: 0 50% 0 50%;
+			}
+			.fondo2 {
+				display: inline;
+				background-image: url(agua.jpg);
+				background-size: cover;
+				border-radius: 50%;
+			}
+			.fondo3 {
+				background-image: url(especial.jpg);
+				background-repeat: no-repeat;
+				background-size: 100% 100%;
+				border-top-left-radius: 50% 20%;
+				border-top-right-radius: 50% 20%;
+				border-bottom-left-radius: 50% 20%;
+				border-bottom-right-radius: 50% 20%;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="contenedor">
+			<div class="fondo1"></div>
+			<div class="fondo2"></div>
+			<div class="fondo3"></div>
+		</div>
+	</body>
